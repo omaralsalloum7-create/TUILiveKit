@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.tencent.cloud.tuikit.engine.room.TUIRoomDefine;
+import com.trtc.uikit.livekit.features.vip.model.VipInfo;
+import com.trtc.uikit.livekit.features.vip.model.VipLevel;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -51,6 +53,11 @@ public class UserState {
         public MutableLiveData<TUIRoomDefine.Role> role              =
                 new MutableLiveData<>(TUIRoomDefine.Role.GENERAL_USER);
         public MutableLiveData<Boolean>            isMessageDisabled = new MutableLiveData<>(false);
+        
+        // VIP System fields
+        public MutableLiveData<VipInfo>     vipInfo         = new MutableLiveData<>(new VipInfo());
+        public MutableLiveData<VipLevel>    vipLevel        = new MutableLiveData<>(VipLevel.NONE);
+        public MutableLiveData<Boolean>     isVipActive     = new MutableLiveData<>(false);
 
         public UserInfo() {
         }
@@ -83,5 +90,31 @@ public class UserState {
             this.role.setValue(userInfo.userRole);
             this.isMessageDisabled.setValue(userInfo.isMessageDisabled);
         }
-    }
+
+        /**
+         * Update VIP information for this user
+         */
+        public void updateVipInfo(VipInfo vipInfo) {
+            if (vipInfo != null) {
+                this.vipInfo.setValue(vipInfo);
+                this.vipLevel.setValue(vipInfo.getVipLevelEnum());
+                this.isVipActive.setValue(vipInfo.isActive());
+            }
+        }
+
+        /**
+         * Check if user has active VIP status
+         */
+        public boolean hasActiveVip() {
+            VipInfo info = vipInfo.getValue();
+            return info != null && info.isActive();
+        }
+
+        /**
+         * Get current VIP level
+         */
+        public VipLevel getCurrentVipLevel() {
+            VipLevel level = vipLevel.getValue();
+            return level != null ? level : VipLevel.NONE;
+        }
 }

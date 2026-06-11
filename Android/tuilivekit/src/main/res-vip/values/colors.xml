@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- VIP Level Colors -->
+    <color name="vip_level_1_color">#FFD4AF37</color>
+    <color name="vip_level_2_color">#FFFFEF00</color>
+    <color name="vip_level_3_color">#FF00D4FF</color>
+    <color name="vip_level_4_color">#FF9D4EDD</color>
+    <color name="vip_level_5_color">#FFFF1493</color>
+
+    <!-- VIP Badge Colors -->
+    <color name="vip_badge_bg_1">#FFD4AF37</color>
+    <color name="vip_badge_bg_2">#FFFFEF00</color>
+    <color name="vip_badge_bg_3">#FF00D4FF</color>
+    <color name="vip_badge_bg_4">#FF9D4EDD</color>
+    <color name="vip_badge_bg_5">#FFFF1493</color>
+
+    <color name="vip_badge_text">#FFFFFFFF</color>
+    <color name="vip_glow_alpha">#4DFFFFFF</color>
+</resources>

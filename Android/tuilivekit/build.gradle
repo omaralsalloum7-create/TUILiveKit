@@ -46,6 +46,7 @@ android {
                     'src/main/res-room-info',
                     'src/main/res-livelist',
                     'src/main/res-network-info',
+                    'src/main/res-vip',
             ]
         }
     }
